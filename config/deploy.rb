@@ -1,10 +1,10 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.14.1"
+lock "~> 3.15.0"
 
-set :stages, %w(production staging)
+set :stages, %w(production)
 
 set :application,     'herbalife'
-set :repo_url,        'git@github.com:TechWrightLabs/pedals.git'
+set :repo_url,        'git@github.com:TechWrightLabs/herbalife.git'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    2
@@ -62,26 +62,22 @@ set :keep_releases, 5
 set :bundle_jobs,   4
 
 # SIDEKICK CONFIGURATION
-set :init_system, :systemd
-set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid')
-set :sidekiq_env, fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
-set :sidekiq_log, File.join(shared_path, 'log', 'sidekiq.log')
-set :sidekiq_config, File.join(shared_path, 'config', 'sidekiq.yml')
-set :sidekiq_roles, :worker
-set :sidekiq_user, fetch(:user)
-set :sidekiq_default_hooks, true
-set :sidekiq_service_unit_name, 'sidekiq'
-set :sidekiq_service_unit_user, fetch(:user)
-set :sidekiq_enable_lingering, true
-
-set :rollbar_token, '82896dc1251a4ff7a76331340150a033'
-set :rollbar_env, Proc.new { fetch :stage }
-set :rollbar_role, Proc.new { :app }
+# set :init_system, :systemd
+# set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid')
+# set :sidekiq_env, fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
+# set :sidekiq_log, File.join(shared_path, 'log', 'sidekiq.log')
+# set :sidekiq_config, File.join(shared_path, 'config', 'sidekiq.yml')
+# set :sidekiq_roles, :worker
+# set :sidekiq_user, fetch(:user)
+# set :sidekiq_default_hooks, true
+# set :sidekiq_service_unit_name, 'sidekiq'
+# set :sidekiq_service_unit_user, fetch(:user)
+# set :sidekiq_enable_lingering, true
 
 # if fetch(:nginx_use_ssl)
 #   set :linked_files, %w{.env config/puma.rb config/database.yml config/sidekiq.yml config/master.key config/cable.yml ssl/certs/tournity_production.crt ssl/private/tournity_production.key}
 # else
-  set :linked_files, %w{.env config/puma.rb config/database.yml config/sidekiq.yml config/master.key}
+  set :linked_files, %w{.env config/puma.rb config/database.yml config/master.key}
 # end
 
 set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets storage}
@@ -108,7 +104,7 @@ set :keep_releases, 5
 # WHENEVER
 # set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
-SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
+# SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
+# SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
 
 # after "deploy:updated", "newrelic:notice_deployment"
