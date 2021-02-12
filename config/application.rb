@@ -15,6 +15,8 @@ module Herbalife
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
+    config.default_url_options = { host: 'https://www.indiaspectacular2021.vip/' }
+    config.action_mailer.default_url_options = { host: 'https://www.indiaspectacular2021.vip/' }
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
