@@ -44,7 +44,7 @@ set :puma_preload_app, true
 set :puma_tag, fetch(:application)
 set :puma_restart_command, 'bundle exec --keep-file-descriptors puma'
 # set :puma_restart_command, 'bundle exec puma'
-# set :puma_restart_command_with_sudo, false
+set :puma_restart_command_with_sudo, false
 
 # Nginx Config
 set :nginx_config_name, "#{fetch(:application)}_#{fetch(:stage)}"
