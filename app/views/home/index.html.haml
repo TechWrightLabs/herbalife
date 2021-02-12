@@ -1,0 +1,26 @@
+%script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
+= render 'notice'
+
+.bg.text-white
+  .container
+    .row{ style: 'padding-top: 100px;'}
+      = image_tag 'logo.gif', class: 'mx-auto', style: 'width: 300px;'
+    / .row.text-center{ style: 'padding-top: 100px;'}
+    /   %h1.mx-auto.h1 Welcome!
+    /   %lead Please enter your's and your associates name below to receive your certificate
+    .row{ style: 'padding-top: 40px;'}
+      = form_for @user do |f|
+        #fields.mt-2.row
+          .form-group.col-md-3.mx-auto
+          .form-group.col-md-3.text-right.mt-2
+            = f.text_field :name, class: 'form-control', required: true, placeholder: 'Name of Associate 1*'
+          .form-group.col-md-3.text-left.mt-2
+            = f.text_field :partner, class: 'form-control', placeholder: 'Name of Associate 2 (if applicable)'
+          .form-group.col-md-3.mx-auto
+        .form-group.mx-auto.text-center.mt-4
+          = f.check_box :agreed_to_terms
+          = f.label :agreed_to_terms, 'By clicking here, I/we hereby certify that I/we are registered associates of Herbalife International India Pvt Ltd.'
+        .actions.text-center{ style: 'padding-top: 50px;'}
+          = f.submit 'Submit', class: 'btn btn-success btn-lg'
+
+
