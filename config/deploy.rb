@@ -50,7 +50,7 @@ set :puma_restart_command, 'bundle exec --keep-file-descriptors puma'
 set :nginx_config_name, "#{fetch(:application)}_#{fetch(:stage)}"
 set :nginx_flags, 'fail_timeout=0'
 set :nginx_http_flags, fetch(:nginx_flags)
-set :nginx_server_name, "localhost #{fetch(:application)}.local tournity.gg www.tournity.gg"
+set :nginx_server_name, "localhost #{fetch(:application)}.local"
 set :nginx_sites_available_path, '/etc/nginx/sites-available'
 set :nginx_sites_enabled_path, '/etc/nginx/sites-enabled'
 set :nginx_ssl_certificate, "#{shared_path}/ssl/certs/#{fetch(:nginx_config_name)}.crt"
