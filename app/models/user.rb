@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one_attached :certificate
 
   validate :check_terms_agreement
+  validate :name_length
 
   def generate_certificate
     if self.partner.blank?
@@ -45,5 +46,13 @@ class User < ApplicationRecord
   private
     def check_terms_agreement
       errors.add(:agreed_to_terms, 'needs to be checked before continuing!') unless self.agreed_to_terms
+    end
+
+    def name_length
+      if (self.first_name.size + self.last_name.size) > 20
+        errors.add(:name, 'should be less than 20 characters!')
+      elsif (self.partner.size > 20)
+        errors.add(:partner, 'name should be less than 20 characters!')
+      end
     end
 end
