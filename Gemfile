@@ -46,7 +46,7 @@ group :deploy do
   gem 'capistrano-yarn',                   require: false
   gem 'capistrano-rvm',                    require: false
   gem 'capistrano3-puma', github: "seuros/capistrano-puma", require: false
-  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq', require: false
+  # gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq', require: false
   gem 'capistrano-webpacker-precompile', require: false
   gem 'bugsnag-capistrano', require: false
 end
@@ -66,6 +66,8 @@ group :development do
   gem "pry-remote"
 end
 
+gem 'dotenv'
+gem 'httparty'
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'

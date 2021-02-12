@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
     img.annotate(text, 0,0,330,0, message) do
       text.gravity = Magick::WestGravity # Text positioning
-      text.pointsize = 250 # Font size
+      text.pointsize = 220 # Font size
       text.fill = "#bf2571" # Font color
       text.font = "#{Rails.root}/db/data/SnellRoundhand.ttc"
       text.font_weight = 500
