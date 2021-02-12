@@ -45,7 +45,7 @@ group :deploy do
   gem 'capistrano-rails', "~> 1.6",        require: false
   gem 'capistrano-yarn',                   require: false
   gem 'capistrano-rvm',                    require: false
-  gem 'capistrano3-puma', github: "seuros/capistrano-puma", require: false
+  gem 'capistrano3-puma', require: false
   # gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq', require: false
   gem 'capistrano-webpacker-precompile', require: false
   gem 'bugsnag-capistrano', require: false

@@ -24,7 +24,7 @@ set :assets_manifests, ['app/assets/config/manifest.js']
 set :conditionally_migrate, true
 set :migration_servers, -> { primary(fetch(:migration_role)) }
 
-set :rvm_path, '/home/deploy/.rvm'
+# set :rvm_path, '/home/deploy/.rvm'
 
 # puma configs
 set :puma_user, fetch(:user)
