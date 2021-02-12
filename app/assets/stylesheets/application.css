@@ -21,7 +21,7 @@ body, html {
 
 .bg {
   /* The image used */
-  background-image: url("background.png");
+  background-image: url("https://herbalife-2021.s3.ap-south-1.amazonaws.com/background.png");
 
   /* Full height */
   height: 100%;
