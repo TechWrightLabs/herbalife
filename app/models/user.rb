@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_one_attached :certificate
 
-  validate :check_terms_agreement
+  # validate :check_terms_agreement
   validate :name_length
 
   def generate_certificate
@@ -16,23 +16,23 @@ class User < ApplicationRecord
     text = Magick::Draw.new
     if self.partner.blank?
       message = <<~INFO
-        #{self.first_name} #{self.last_name}
+        #{self.first_name}
       INFO
     else
       message = <<~INFO
-        #{self.first_name} #{self.last_name}
+        #{self.first_name}
         #{self.partner}
       INFO
     end
 
-    img.annotate(text, 0,0,330,0, message) do
+    img.annotate(text, 0,0,360,-60, message) do
       text.gravity = Magick::WestGravity # Text positioning
-      text.pointsize = 220 # Font size
+      text.pointsize = 210 # Font size
       text.fill = "#bf2571" # Font color
       text.font = "#{Rails.root}/db/data/SnellRoundhand.ttc"
       text.font_weight = 500
       text.font_style = Magick::ItalicStyle
-      text.interline_spacing = 12
+      text.interline_spacing = 4
       img.format = "jpeg"
     end
 
@@ -49,9 +49,9 @@ class User < ApplicationRecord
     end
 
     def name_length
-      if (self.first_name.size + self.last_name.size) > 20
+      if self.first_name.size > 20
         errors.add(:name, 'should be less than 20 characters!')
-      elsif (self.partner.size > 20)
+      elsif self.partner.size > 20
         errors.add(:partner, 'name should be less than 20 characters!')
       end
     end

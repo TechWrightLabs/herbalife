@@ -17,9 +17,9 @@
           .form-group.col-md-3.text-left.mt-2
             = f.text_field :partner, class: 'form-control', placeholder: 'Name of Spouse'
           .form-group.col-md-3.mx-auto
-        .form-group.mx-auto.text-center.mt-4
-          = f.check_box :agreed_to_terms
-          = f.label :agreed_to_terms, 'By clicking here, I/we hereby certify that I/we are registered associates of Herbalife International India Pvt Ltd.'
+          / .form-group.mx-auto.text-center.mt-4
+          / = f.check_box :agreed_to_terms
+          / = f.label :agreed_to_terms, 'By clicking here, I/we hereby certify that I/we are registered associates of Herbalife International India Pvt Ltd.'
         .actions.text-center{ style: 'padding-top: 50px;'}
           = f.submit 'Submit', class: 'btn btn-success btn-lg'
 
